@@ -14,3 +14,7 @@ Replace the "Name TBA" officers with real names and set `placeholder: false`.
 
 ## Deploy free
 Push to GitHub, then import the repo on vercel.com. `npm run build` also writes a static site to `out/`.
+
+## Add real photos
+The "Moments" gallery shows illustrations until you add photos. Put images in `public/photos/`
+and set `photo` on the matching item in `moments` (in `lib/data.ts`), e.g. `photo: "/photos/iftar.jpg"`.

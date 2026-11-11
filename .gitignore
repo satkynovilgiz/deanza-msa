@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# original full-size officer photos (the site uses the resized, metadata-free copies in public/officers/web/)
+/public/officers/*.jpeg
+/public/officers/*.jpg
+/public/officers/*.png

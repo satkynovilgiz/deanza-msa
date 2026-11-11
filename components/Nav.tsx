@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { StarMark } from "./Star";
-import { INSTAGRAM } from "@/lib/data";
+import Image from "next/image";
 
 const links = [
   { href: "#about", label: "About" },
   { href: "#events", label: "Events" },
+  { href: "#moments", label: "Moments" },
   { href: "#officers", label: "Officers" },
 ];
 
@@ -25,7 +25,7 @@ export default function Nav() {
     <header className={`nav ${scrolled ? "scrolled" : ""}`}>
       <div className="wrap nav-inner">
         <a href="#top" className="brand" onClick={() => setOpen(false)}>
-          <StarMark className="brand-mark" />
+          <Image src="/logo.png" alt="De Anza MSA logo" width={40} height={40} className="brand-logo" priority />
           De Anza MSA
         </a>
         <button id="menu-btn" className="menu-btn" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>
@@ -37,7 +37,7 @@ export default function Nav() {
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="btn btn-primary">Join us</a>
+          <a href="#join" className="btn btn-primary" onClick={() => setOpen(false)}>Join us</a>
         </nav>
       </div>
     </header>
