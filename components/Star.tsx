@@ -12,18 +12,18 @@ export function StarMark({ className }: { className?: string }) {
 }
 
 /** Repeating girih-style tile used behind officer avatars. */
-export function StarTile() {
+export function StarTile({ id = "tile" }: { id?: string }) {
   return (
     <svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
-        <pattern id="tile" width="40" height="40" patternUnits="userSpaceOnUse">
+        <pattern id={id} width="40" height="40" patternUnits="userSpaceOnUse">
           <g fill="none" stroke="#f3e3c2" strokeWidth="1.2">
             <rect x="10" y="10" width="20" height="20" />
             <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)" />
           </g>
         </pattern>
       </defs>
-      <rect width="120" height="120" fill="url(#tile)" />
+      <rect width="120" height="120" fill={`url(#${id})`} />
     </svg>
   );
 }
