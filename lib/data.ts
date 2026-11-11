@@ -98,15 +98,39 @@ export type Event = {
   title: string;
   when: string;
   where: string;
+  /** Weekly events stay "Weekly". Dated events become "Past" automatically once `end` has passed. */
   tag: "Weekly" | "Upcoming" | "Past";
-  icon: "jumuah" | "halaqa" | "iftar" | "heritage" | "bingo";
+  icon: "jumuah" | "halaqa" | "iftar" | "heritage" | "bingo" | "games";
+  /** Date tile shown on the left of the card, e.g. ["NOV", "19"] or ["EVERY", "FRI"]. */
+  tile: [string, string];
+  /** Exact times (ISO with Pacific offset) power the countdown, "Add to calendar" and auto-Past. */
+  start?: string;
+  end?: string;
+  /** Spotlight this event at the top while it's upcoming. */
+  featured?: boolean;
+  /** Partner MSAs shown as badges. */
+  collab?: string[];
   blurb: string;
 };
 
 export const events: Event[] = [
   {
+    title: "Game Night",
+    icon: "games",
+    tile: ["NOV", "19"],
+    when: "Thursday, Nov 19 · 4:00–6:00 PM",
+    where: "Location TBA · check Instagram",
+    start: "2026-11-19T16:00:00-08:00",
+    end: "2026-11-19T18:00:00-08:00",
+    tag: "Upcoming",
+    featured: true,
+    collab: ["De Anza", "Evergreen Valley", "Foothill", "Mission"],
+    blurb: "Four MSAs, one night of games. Board games, card games, snacks and a lot of laughing with the MSAs from Evergreen Valley College, Foothill and Mission College. Bring a friend!",
+  },
+  {
     title: "Jumu'ah Prayer",
     icon: "jumuah",
+    tile: ["EVERY", "FRI"],
     when: "Fridays · 1:00–2:30 PM",
     where: "Campus Center, Room 223",
     tag: "Weekly",
@@ -115,6 +139,7 @@ export const events: Event[] = [
   {
     title: "Weekly Halaqa",
     icon: "halaqa",
+    tile: ["WEEKLY", "TBA"],
     when: "Day & time TBA",
     where: "Location TBA",
     tag: "Weekly",
@@ -123,6 +148,7 @@ export const events: Event[] = [
   {
     title: "Ramadan Iftars",
     icon: "iftar",
+    tile: ["FEB–MAR", "1448"],
     when: "Ramadan 1448 · Feb–Mar 2027",
     where: "De Anza campus",
     tag: "Upcoming",
@@ -131,6 +157,7 @@ export const events: Event[] = [
   {
     title: "Muslim Heritage Month",
     icon: "heritage",
+    tile: ["SPRING", "QTR"],
     when: "Spring quarter",
     where: "De Anza campus",
     tag: "Past",
@@ -139,9 +166,11 @@ export const events: Event[] = [
   {
     title: "Islamic Bingo Night",
     icon: "bingo",
+    tile: ["APR", "26"],
     when: "April 26, 2024",
     where: "West Valley Muslim Association, Saratoga",
     tag: "Past",
+    collab: ["De Anza", "Foothill"],
     blurb: "A joint night with Foothill MSA: bingo, prizes and a lot of laughing.",
   },
 ];

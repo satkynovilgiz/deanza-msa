@@ -4,9 +4,10 @@ import Nav from "@/components/Nav";
 import { StarTile } from "@/components/Star";
 import { HijriDate, Motion, NextJumuah } from "@/components/Effects";
 import LogoHero from "@/components/LogoHero";
-import { EventIcon, JoinSkyline, PillarArt, scenes } from "@/components/Illustrations";
+import { JoinSkyline, PillarArt, scenes } from "@/components/Illustrations";
 import InternForm from "@/components/InternForm";
-import { events, officers, pillars, moments, INSTAGRAM, WHATSAPP, DISCORD, INTERN_OPEN, PRAYER_ROOM } from "@/lib/data";
+import EventsBoard from "@/components/EventsBoard";
+import { officers, pillars, moments, INSTAGRAM, WHATSAPP, DISCORD, INTERN_OPEN, PRAYER_ROOM } from "@/lib/data";
 
 const initials = (name: string) =>
   name.includes("TBA") ? "?" : name.split(" ").map((p) => p[0]).join("").slice(0, 2);
@@ -132,7 +133,8 @@ export default function Home() {
             </div>
             <p>Exact times and rooms go up on Instagram first. Follow <a href={INSTAGRAM} target="_blank" rel="noreferrer" style={{ color: "var(--jade)", fontWeight: 600 }}>@deanzamsa</a> so you don&apos;t miss one.</p>
           </div>
-          <div className="prayer-room reveal zoom">
+          <EventsBoard />
+          <div className="prayer-room reveal zoom" style={{ marginTop: 28, marginBottom: 0 }}>
             <div className="prayer-art" aria-hidden="true">
               <svg viewBox="0 0 120 140">
                 <path d="M14 136 V58 A46 46 0 0 1 106 58 V136Z" fill="var(--jade)" />
@@ -153,19 +155,6 @@ export default function Home() {
               <strong>{PRAYER_ROOM.jumuah}</strong>
               <em>{PRAYER_ROOM.building}, {PRAYER_ROOM.room}</em>
             </div>
-          </div>
-          <div className="events">
-            {events.map((e, i) => (
-              <article key={e.title} className={`event glow-border tone-${e.tag} reveal ${i % 2 ? "from-right" : "from-left"}`} style={{ transitionDelay: `${i * 70}ms` }}>
-                <div className={`event-icon icon-${e.tag}`}><EventIcon kind={e.icon} /></div>
-                <div style={{ minWidth: 0 }}>
-                  <span className={`tag tag-${e.tag}`}>{e.tag}</span>
-                  <h3>{e.title}</h3>
-                  <p>{e.blurb}</p>
-                </div>
-                <div className="event-meta"><strong>{e.when}</strong>{e.where}</div>
-              </article>
-            ))}
           </div>
         </div>
       </section>

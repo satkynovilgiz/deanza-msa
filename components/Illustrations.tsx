@@ -352,7 +352,7 @@ export function PillarArt({ kind }: { kind: "faith" | "community" | "service" })
 
 /* ---------------- Event icons (viewBox 48x48, currentColor) ---------------- */
 
-export function EventIcon({ kind }: { kind: "jumuah" | "halaqa" | "iftar" | "heritage" | "bingo" }) {
+export function EventIcon({ kind }: { kind: "jumuah" | "halaqa" | "iftar" | "heritage" | "bingo" | "games" }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -360,6 +360,7 @@ export function EventIcon({ kind }: { kind: "jumuah" | "halaqa" | "iftar" | "her
       {kind === "halaqa" && <g {...common}><path d="M24 14 Q16 9 7 11 V36 Q16 34 24 39 Q32 34 41 36 V11 Q32 9 24 14Z" /><path d="M24 14 V39" /></g>}
       {kind === "iftar" && <g {...common}><path d="M30 8 A14 14 0 1 0 40 30 A11 11 0 0 1 30 8Z" /><path d="M8 40 H26" /><ellipse cx="17" cy="35" rx="6" ry="3.5" /></g>}
       {kind === "heritage" && <g {...common}><rect x="12" y="12" width="24" height="24" /><rect x="12" y="12" width="24" height="24" transform="rotate(45 24 24)" /><circle cx="24" cy="24" r="3" fill="currentColor" /></g>}
+      {kind === "games" && <g {...common}><path d="M14 16 H34 a8 8 0 0 1 8 8 v6 a6 6 0 0 1 -10.5 4 L28 30 H20 l-3.5 4 A6 6 0 0 1 6 30 v-6 a8 8 0 0 1 8 -8Z" /><path d="M15 20 v6 M12 23 h6" /><circle cx="31" cy="21.5" r="1.6" fill="currentColor" /><circle cx="35" cy="25.5" r="1.6" fill="currentColor" /></g>}
       {kind === "bingo" && <g {...common}><rect x="8" y="8" width="32" height="32" rx="4" /><path d="M8 18.7 H40 M8 29.3 H40 M18.7 8 V40 M29.3 8 V40" /><circle cx="24" cy="24" r="3" fill="currentColor" /><circle cx="13.4" cy="13.4" r="2.4" fill="currentColor" /><circle cx="34.6" cy="34.6" r="2.4" fill="currentColor" /></g>}
     </svg>
   );
